@@ -24,8 +24,9 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // CORS Config
+// CORS Config
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL : '*',
+  origin: '*', // Allow all origins for public launch/preview
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
