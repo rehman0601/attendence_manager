@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { authFetch } from '../utils/api';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -19,9 +20,8 @@ const LoginPage = () => {
         e.preventDefault();
         setError('');
         try {
-            const res = await fetch('/api/users/login', {
+            const res = await authFetch('/api/users/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
