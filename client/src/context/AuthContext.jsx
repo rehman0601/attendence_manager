@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import { authFetch } from '../utils/api';
 
 const AuthContext = createContext();
 
@@ -9,11 +9,8 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (token) {
-            // Ideally verify token with backend here, for now just decode or assume valid
-            // We can fetch user profile
-            fetch('/api/users/me', {
-                headers: { Authorization: `Bearer ${token}` }
-            })
+            // Verify token with backend
+            authFetch('/api/users/me')
                 .then(res => {
                     if (res.ok) return res.json();
                     throw new Error('Failed to fetch user');

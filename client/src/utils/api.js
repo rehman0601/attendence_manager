@@ -1,6 +1,6 @@
 export const authFetch = async (url, options = {}) => {
   const token = localStorage.getItem('token');
-  const baseUrl = import.meta.env.VITE_API_URL || '';
+  const baseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
   const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`;
   
   const headers = {
