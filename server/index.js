@@ -16,6 +16,9 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 
+// Trust Proxy for Vercel
+app.set('trust proxy', 1);
+
 // Rate Limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
