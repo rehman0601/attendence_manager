@@ -2,10 +2,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./db');
-
-dotenv.config();
-connectDB();
-
 const path = require('path');
 const helmet = require('helmet');
 const compression = require('compression');
